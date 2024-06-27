@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pizza.access_pizza_main_page,access_pizza_main_page,pizza.model_pizza_main_page,base.group_user,1,1,0,0
+pizza.access_pizza_pizza,access_pizza_pizza,pizza.model_pizza_pizza,base.group_user,1,1,1,1
+pizza.access_cart,access_cart,pizza.model_cart,base.group_user,1,1,1,1
+pizza.access_cart_line,access_cart_line,pizza.model_cart_line,base.group_user,1,1,1,1
+pizza.access_drink,access_drink,pizza.model_drink,base.group_user,1,1,1,1
+pizza.access_ingredient,access_ingredient,pizza.model_ingredient,base.group_user,1,0,0,0
+pizza.access_pizza_type,access_pizza_type,pizza.model_pizza_type,base.group_user,1,1,1,1
+pizza.access_pizza_configurator,access_pizza_configurator,pizza.model_pizza_configurator,base.group_user,1,1,1,1

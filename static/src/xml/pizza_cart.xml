@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="systray_icon" owl="1">
+        <div class="o-dropdown dropdown o-mail-DiscussSystray-class o-dropdown--no-caret" t-on-click="_onClick" role="button">
+            <div class="toggle-icon" role="button">
+                <i id='create_order'
+                 class="fa fa-shopping-cart fa-1.5x"
+                 style="font-size:20px; margin-right: 15px; margin-left: 15px;"
+                 role="img"
+                 aria-label="Purchase Order"/>
+            </div>
+        </div>
+    </t>
+</templates>

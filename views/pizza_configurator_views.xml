@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="pizza_configurator_form" model="ir.ui.view">
+        <field name="model">pizza.configurator</field>
+        <field name="arch" type="xml">
+            <form class="pt-0">
+                <script>
+                    $('.modal-footer').css({'display': 'none'});
+                    $('.o_form_view').css({'border-radius': '30px'});
+                    $('.modal-dialog').css({'border-radius': '30px'});
+                    $('.modal-body').css({'border-radius': '30px'});
+                </script>
+                <header>
+                </header>
+                <group>
+                    <group>
+                        <field name="image" widget="image" string=" " class="pt-0" readonly="1"/>
+                    </group>
+                    <group>
+                        <h1 colspan="2" class="fw-light"><field name="name" readonly="1" nolabel="1"/></h1>
+                        <h4 colspan="2" class="fw-light"><field name="description" readonly="1" nolabel="1"/></h4>
+                        <field name="ingredient_ids" widget="many2many_tags"/>
+                        <field name="size" widget="selection_badge"/>
+                        <field name="dough" widget="selection_badge"/>
+                        <field name="price" readonly="1"/>
+                        <div class="d-grid gap-2" colspan="2">
+                            <button name="add_pizza_to_cart" class="btn btn-outline-warning btn-lg select_button px-4 py-2" string="В корзину" type="object"/>
+                        </div>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

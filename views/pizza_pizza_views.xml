@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="pizza_pizza_form" model="ir.ui.view">
+        <field name="name">pizza.pizza.form</field>
+        <field name="model">pizza.pizza</field>
+        <field name="arch" type="xml">
+            <form>
+                <script>
+                    $('.modal-header').css({'display': 'none'});
+                    $('.modal-footer').css({'display': 'none'});
+                    $('.o_form_view').css({'border-radius': '30px'});
+                    $('.modal-dialog').css({'border-radius': '30px'});
+                    $('.modal-body').css({'border-radius': '30px'});
+                </script>
+                <group>
+                    <group style="width: 60%">
+                        <field name="image" widget="image" string=" " class="pt-4"/>
+                    </group>
+                    <group style="width: 40%">
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="price"/>
+                        <field name="size" widget="selection_badge"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

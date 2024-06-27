@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="pizza_type_action" model="ir.actions.act_window">
+        <field name="res_model">pizza.type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="pizza_type_root_menu" name="Pizza Type" action="pizza_type_action" sequence="20"/>
+
+</odoo>

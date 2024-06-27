@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="drink_form" model="ir.ui.view">
+        <field name="name">drink.form</field>
+        <field name="model">drink</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group style="width: 60%">
+                        <field name="image" widget="image" string=" " class="pt-4"/>
+                    </group>
+                    <group style="width: 40%">
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="price"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="drink_action" model="ir.actions.act_window">
+        <field name="res_model">drink</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="drink_root_menu" name="Drink" action="drink_action" sequence="20"/>
+
+</odoo>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="pizza_main_page_form" model="ir.ui.view">
+        <field name="model">pizza.main.page</field>
+        <field name="arch" type="xml">
+            <form>
+                <script>
+                    $(".modal").on('DOMNodeRemoved', function(e) {
+                        console.log(e.target, 'was removed');
+                    });
+
+
+                </script>
+                <br/>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <div class="mt-4">ss</div>
+                        <div id="carouselExample" class="carousel slide mt-4">
+                            <div class="carousel-indicators">
+                                <button special="cancel" data-bs-target="#carouselExampleIndicators"
+                                        data-bs-slide-to="0" class="active btn" aria-current="true"
+                                        aria-label="Slide 1"></button>
+                                <button special="cancel" data-bs-target="#carouselExampleIndicators" class="btn"
+                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button special="cancel" data-bs-target="#carouselExampleIndicators" class="btn"
+                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                {% for image_id in record.carousel_image_ids %}
+                                {% if loop.index == 1 %}
+                                <div class="carousel-item active">
+                                    <img src="web/image/{{{ image_id.id }}}"
+                                         class="d-block w-100"/>
+                                </div>
+                                {% else %}
+                                <div class="carousel-item">
+                                    <img src="web/image/{{{ image_id.id }}}"
+                                         class="d-block w-100"/>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev" special="cancel"
+                                    data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" special="cancel"
+                                    data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <h1 class="mt-5">Пиццы</h1>
+                        <field name="pizza_type_ids" id="pizzas" readonly="1" string=" " class="mt-5">
+                            <kanban action="open_pizza_configurator" type="object">
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="image"/>
+                                <field name="price"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div t-attf-class="oe_kanban_global_click border-0 bg-transparent"
+                                             style="width:330px;">
+                                            <div class="o_kanban_image_fill_top">
+                                                <img t-att-src="kanban_image('pizza.type','image', record.id.raw_value)"
+                                                     style="width:100%; height:100%;" class="pizza_main_image" alt="Pizza"/>
+                                            </div>
+                                            <div class="oe_kanban_details mt-2">
+                                                <ul>
+                                                    <li class="mb4">
+                                                        <h5>
+                                                            <div style="font-size: 20px;">
+                                                                <field name="name"/>
+                                                            </div>
+                                                            <div class="text-muted mt-2">
+                                                                <small>
+                                                                    <field name="description"/>
+                                                                </small>
+                                                            </div>
+                                                            <div class="mt-5 o_row">
+                                                                <div>
+                                                                    <h2>от
+                                                                        <field name="price"/>
+                                                                        руб.
+                                                                    </h2>
+                                                                </div>
+                                                                <button name="open_pizza_configurator"
+                                                                        class="btn btn-outline-warning btn-lg select_button px-4 py-2"
+                                                                        string="Выбрать" type="object"/>
+                                                            </div>
+                                                        </h5>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+
+                        <h1 class="mt-5" id="drinks">Напитки</h1>
+                        <field name="drink_ids" readonly="1" string=" " class="mt-5">
+                            <kanban action="add_to_cart" type="object">
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="image"/>
+                                <field name="price"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div t-attf-class="oe_kanban_global_click border-0 bg-transparent"
+                                             style="width:330px;">
+                                            <div class="o_kanban_image_fill_top">
+                                                <img t-att-src="kanban_image('drink','image', record.id.raw_value)"
+                                                     style="width:100%; height:100%;" class="pizza_main_image" alt="Pizza"/>
+                                            </div>
+                                            <div class="oe_kanban_details mt-2">
+                                                <ul>
+                                                    <li class="mb4">
+                                                        <h5>
+                                                            <div style="font-size: 20px;">
+                                                                <field name="name"/>
+                                                            </div>
+                                                            <div class="text-muted mt-2">
+                                                                <small>
+                                                                    <field name="description"/>
+                                                                </small>
+                                                            </div>
+                                                            <div class="mt-5 o_row">
+                                                                <div>
+                                                                    <h2>от
+                                                                        <field name="price"/>
+                                                                        руб.
+                                                                    </h2>
+                                                                </div>
+                                                                <button name="add_to_cart"
+                                                                        class="btn btn-outline-warning btn-lg select_button px-4 py-2"
+                                                                        string="В корзину" type="object"/>
+                                                            </div>
+                                                        </h5>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="pizza_main_page_action" model="ir.actions.act_window">
+        <field name="name">Pizza</field>
+        <field name="res_model">pizza.main.page</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="res_id">1</field>
+        <field name="context">{'no_breadcrumbs': True, 'test_pizza_ids': [1,2,3]}</field>
+    </record>
+
+    <menuitem id="pizza_main_page_root_menu" name="Pizza" action="pizza_main_page_action" sequence="20" web_icon="pizza,static/description/icon.png"/>
+
+    <record id="drinks_in_page_action" model="ir.actions.act_url">
+        <field name="name">Напитки TEST</field>
+        <field name="target">self</field>
+        <field name="url">#drinks</field>
+    </record>
+
+    <menuitem id="pizza_main_page_pizza_menu" name="Пиццы" parent="pizza_main_page_root_menu" action="pizza_type_action" sequence="1"/>
+    <menuitem id="pizza_main_page_drink_menu" name="Напитки TEST" parent="pizza_main_page_root_menu" action="drinks_in_page_action" sequence="2"/>
+
+</odoo>
